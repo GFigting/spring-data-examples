@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 the original author or authors.
+ * Copyright 2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,10 +25,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.CrudRepository;
 
-/**
- * @author Christoph Strobl
- * @since 2025/01
- */
 public interface UserRepository extends CrudRepository<User, String>, QuerydslPredicateExecutor<User> {
 
 	User findUserByUsername(String username);

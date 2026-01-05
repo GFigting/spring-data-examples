@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 the original author or authors.
+ * Copyright 2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,10 +39,6 @@ public class CLR implements CommandLineRunner {
 		User luke = new User("id-1", "luke");
 		luke.setFirstname("Luke");
 		luke.setLastname("Skywalker");
-		// Post lukeP1 = new Post("I have a bad feeling about this.");
-		// em.persist(lukeP1);
-		// luke.setPosts(List.of(lukeP1));
-
 		User leia = new User("id-2", "leia");
 		leia.setFirstname("Leia");
 		leia.setLastname("Organa");
@@ -50,25 +46,12 @@ public class CLR implements CommandLineRunner {
 		User han = new User("id-3", "han");
 		han.setFirstname("Han");
 		han.setLastname("Solo");
-		// Post hanP1 = new Post("It's the ship that made the Kessel Run in less than 12 Parsecs.");
-		// em.persist(hanP1);
-		// han.setPosts(List.of(hanP1));
 
 		User chewbacca = new User("id-4", "chewbacca");
 		User yoda = new User("id-5", "yoda");
-		Post yodaP1 = new Post("Do. Or do not. There is no try.");
-		Post yodaP2 = new Post(
-				"Decide you must, how to serve them best. If you leave now, help them you could; but you would destroy all for which they have fought, and suffered.");
-		// em.persist(yodaP1);
-		// em.persist(yodaP2);
-		// yoda.setPosts(List.of(yodaP1, yodaP2));
-
 		User vader = new User("id-6", "vader");
 		vader.setFirstname("Anakin");
 		vader.setLastname("Skywalker");
-		// Post vaderP1 = new Post("I am your father");
-		// em.persist(vaderP1);
-		// vader.setPosts(List.of(vaderP1));
 
 		User kylo = new User("id-7", "kylo");
 		kylo.setFirstname("Ben");
@@ -81,9 +64,6 @@ public class CLR implements CommandLineRunner {
 
 		System.out.println("------- derived single -------");
 		System.out.println(repository.findUserByUsername("yoda"));
-
-		// System.out.println("------- derived nested.path -------");
-		// System.out.println(repository.findUserByPostsMessageLike("father"));
 
 		System.out.println("------- derived optional -------");
 		System.out.println(repository.findOptionalUserByUsername("yoda"));
@@ -118,8 +98,5 @@ public class CLR implements CommandLineRunner {
 
 		System.out.println("------- derived top -------");
 		System.out.println(repository.findTop2UsersByLastnameStartingWith("S"));
-
-		// System.out.println("------- derived with fields -------");
-		// System.out.println(repository.findJustUsernameBy());
 	}
 }
