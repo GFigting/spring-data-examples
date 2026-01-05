@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 the original author or authors.
+ * Copyright 2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import org.junit.platform.commons.util.AnnotationUtils;
 import org.springframework.util.StringUtils;
 
 import org.testcontainers.cassandra.CassandraContainer;
+import org.testcontainers.utility.MountableFile;
 
 import com.datastax.oss.driver.api.core.CqlSession;
 
@@ -101,6 +102,8 @@ class CassandraExtension implements BeforeAllCallback {
 
 		container = new CassandraContainer(getCassandraDockerImageName());
 		container.withReuse(true);
+		container.withCopyFileToContainer(MountableFile.forClasspathResource("/cassandra.yml"),
+				"/etc/cassandra/cassandra.yaml");
 
 		container.start();
 
@@ -110,6 +113,6 @@ class CassandraExtension implements BeforeAllCallback {
 	private String getCassandraDockerImageName() {
 
 		return String.format("cassandra:%s",
-				Optional.ofNullable(System.getenv("CASSANDRA_VERSION")).filter(StringUtils::hasText).orElse("5.0.4"));
+				Optional.ofNullable(System.getenv("CASSANDRA_VERSION")).filter(StringUtils::hasText).orElse("5.0.6"));
 	}
 }
